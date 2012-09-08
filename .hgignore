@@ -1,0 +1,6 @@
+syntax: glob
+BasE91.Console/obj/*
+BasE91/obj/*
+Debug/*
+Release/*
+*.suo

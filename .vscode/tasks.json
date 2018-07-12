@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/test/DZen.BasE91.Benchmark/DZen.BasE91.Benchmark.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

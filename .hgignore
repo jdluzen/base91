@@ -4,3 +4,6 @@ BasE91/obj/*
 Debug/*
 Release/*
 *.suo
+src/DZen.BasE91/obj/*
+test/DZen.BasE91.Test/obj/*
+test/DZen.BasE91.Benchmark/obj/*

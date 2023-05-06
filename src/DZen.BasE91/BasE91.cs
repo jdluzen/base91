@@ -2,7 +2,7 @@
 * basE91 encoding/decoding routines
 *
 * Copyright (c) 2000-2006 Joachim Henke
-* Copyright (c) 2018 Joe Dluzen
+* Copyright (c) 2018, 2023 Joe Dluzen
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -31,6 +31,7 @@
 */
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace DZen.BasE91
@@ -120,9 +121,7 @@ namespace DZen.BasE91
                     dv = dectab[s[i]];
                 else
                 {
-                    dv += dectab[s[i]] * 91;
-                    dbq |= dv << dn;
-                    dn += (dv & 8191) > 88 ? 13 : 14;
+                    EncodeChar(s[i], ref dv, ref dbq, ref dn);
                     do
                     {
                         data.Add((byte)dbq);
@@ -151,9 +150,7 @@ namespace DZen.BasE91
                     dv = dectab[s[i]];
                 else
                 {
-                    dv += dectab[s[i]] * 91;
-                    dbq |= dv << dn;
-                    dn += (dv & 8191) > 88 ? 13 : 14;
+                    EncodeChar(s[i], ref dv, ref dbq, ref dn);
                     do
                     {
                         bytes[decodeIndex++] = (byte)dbq;
@@ -166,6 +163,14 @@ namespace DZen.BasE91
             if (dv != -1)
                 bytes[decodeIndex++] = (byte)(dbq | dv << dn);
             return bytes.Slice(0, decodeIndex);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static void EncodeChar(char c, ref int dv, ref int dbq, ref int dn)
+        {
+            dv += dectab[c] * 91;
+            dbq |= dv << dn;
+            dn += (dv & 8191) > 88 ? 13 : 14;
         }
     }
 }

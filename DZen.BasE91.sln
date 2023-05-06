@@ -1,17 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33626.354
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1193BC3D-9903-4965-A1B6-176BDFA51DC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZen.BasE91", "src\DZen.BasE91\DZen.BasE91.csproj", "{8AA73A60-50AE-4426-B3A5-053C25E2D937}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DZen.BasE91", "src\DZen.BasE91\DZen.BasE91.csproj", "{8AA73A60-50AE-4426-B3A5-053C25E2D937}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{506A6AF9-829C-4D16-88AE-E45DA3DC09C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZen.BasE91.Benchmark", "test\DZen.BasE91.Benchmark\DZen.BasE91.Benchmark.csproj", "{F1F4440D-BEAE-4BA4-A3E2-2E282757B51B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DZen.BasE91.Benchmark", "test\DZen.BasE91.Benchmark\DZen.BasE91.Benchmark.csproj", "{F1F4440D-BEAE-4BA4-A3E2-2E282757B51B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZen.BasE91.Test", "test\DZen.BasE91.Test\DZen.BasE91.Test.csproj", "{45981584-06EE-4C82-83EB-6BE15A77DAD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DZen.BasE91.Test", "test\DZen.BasE91.Test\DZen.BasE91.Test.csproj", "{45981584-06EE-4C82-83EB-6BE15A77DAD2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Profiler", "Profiler\Profiler.csproj", "{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BC894D36-47BB-4CA9-AC70-93D9B508A5DA}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +28,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8AA73A60-50AE-4426-B3A5-053C25E2D937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -62,10 +66,29 @@ Global
 		{45981584-06EE-4C82-83EB-6BE15A77DAD2}.Release|x64.Build.0 = Release|Any CPU
 		{45981584-06EE-4C82-83EB-6BE15A77DAD2}.Release|x86.ActiveCfg = Release|Any CPU
 		{45981584-06EE-4C82-83EB-6BE15A77DAD2}.Release|x86.Build.0 = Release|Any CPU
+		{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA}.Debug|x64.Build.0 = Debug|Any CPU
+		{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA}.Debug|x86.Build.0 = Debug|Any CPU
+		{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA}.Release|x64.ActiveCfg = Release|Any CPU
+		{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA}.Release|x64.Build.0 = Release|Any CPU
+		{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA}.Release|x86.ActiveCfg = Release|Any CPU
+		{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8AA73A60-50AE-4426-B3A5-053C25E2D937} = {1193BC3D-9903-4965-A1B6-176BDFA51DC2}
 		{F1F4440D-BEAE-4BA4-A3E2-2E282757B51B} = {506A6AF9-829C-4D16-88AE-E45DA3DC09C6}
 		{45981584-06EE-4C82-83EB-6BE15A77DAD2} = {506A6AF9-829C-4D16-88AE-E45DA3DC09C6}
+		{BDE5A1E6-D1F7-403B-9D2D-A9D956BC02EA} = {506A6AF9-829C-4D16-88AE-E45DA3DC09C6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE82E770-21AB-446D-B763-FDBAD957F0E3}
 	EndGlobalSection
 EndGlobal

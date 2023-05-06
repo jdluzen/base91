@@ -31,15 +31,13 @@
 */
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace DZen.BasE91
 {
-    public struct BasE91
+    public static class BasE91
     {
-
-        private static readonly char[] enctab = new char[] {
+        private static ReadOnlySpan<char> enctab => new char[] {
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
             'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -49,7 +47,7 @@ namespace DZen.BasE91
             '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~', '"'
         };
 
-        private static readonly byte[] dectab = new byte[]
+        private static ReadOnlySpan<byte> dectab => new byte[]
         {
             91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91,
             91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91,
@@ -69,18 +67,13 @@ namespace DZen.BasE91
             91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91
         };
 
-        public StringBuilder Encode(byte[] ib, int count = -1)
+        public static StringBuilder Encode(ReadOnlySpan<byte> ib)
         {
             if (ib == null)
                 throw new ArgumentNullException(nameof(ib));
-            if (count > ib.Length)
-                throw new ArgumentOutOfRangeException(nameof(count));
-
-            if (count == -1)
-                count = ib.Length;
             int ebq = 0, en = 0;
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < count; ++i)
+            StringBuilder sb = new StringBuilder((int)(ib.Length * 1.23f));
+            for (int i = 0; i < ib.Length; ++i)
             {
                 ebq |= (ib[i] & 255) << en;
                 en += 8;
@@ -112,13 +105,13 @@ namespace DZen.BasE91
             return sb;
         }
 
-        public List<byte> Decode(string s)
+        public static List<byte> Decode(string s)
         {
             if (s == null)
                 throw new ArgumentNullException(nameof(s));
 
             int dbq = 0, dn = 0, dv = -1;
-            List<byte> data = new List<byte>();
+            List<byte> data = new List<byte>((int)(s.Length * (1f - 0.21)));
             for (int i = 0; i < s.Length; ++i)
             {
                 if (dectab[s[i]] == 91)
@@ -142,6 +135,37 @@ namespace DZen.BasE91
             if (dv != -1)
                 data.Add((byte)(dbq | dv << dn));
             return data;
+        }
+
+        public static Span<byte> Decode(string s, Span<byte> bytes)
+        {
+            if (s == null)
+                throw new ArgumentNullException(nameof(s));
+
+            int dbq = 0, dn = 0, dv = -1, decodeIndex = 0;
+            for (int i = 0; i < s.Length; ++i)
+            {
+                if (dectab[s[i]] == 91)
+                    continue;
+                if (dv == -1)
+                    dv = dectab[s[i]];
+                else
+                {
+                    dv += dectab[s[i]] * 91;
+                    dbq |= dv << dn;
+                    dn += (dv & 8191) > 88 ? 13 : 14;
+                    do
+                    {
+                        bytes[decodeIndex++] = (byte)dbq;
+                        dbq >>= 8;
+                        dn -= 8;
+                    } while (dn > 7);
+                    dv = -1;
+                }
+            }
+            if (dv != -1)
+                bytes[decodeIndex++] = (byte)(dbq | dv << dn);
+            return bytes.Slice(0, decodeIndex);
         }
     }
 }

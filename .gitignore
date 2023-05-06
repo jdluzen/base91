@@ -1,0 +1,9 @@
+﻿/.vs
+/src/DZen.BasE91/bin
+/src/DZen.BasE91/obj
+/test/DZen.BasE91.Benchmark/bin
+/test/DZen.BasE91.Benchmark/obj
+/test/DZen.BasE91.Test/bin
+/test/DZen.BasE91.Test/obj
+/Profiler/bin
+/Profiler/obj

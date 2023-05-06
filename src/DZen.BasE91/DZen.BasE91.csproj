@@ -1,11 +1,37 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.0</TargetFramework>
-    <Version>1.0.0-rc</Version>
+    <TargetFramework>netstandard1.1</TargetFramework>
+    <Version>1.0.0</Version>
     <FileVersion>1.0.0</FileVersion>
+    <PackageVersion>1.0.0</PackageVersion>
     <Product>BasE91</Product>
+    <PackageId>DZen.BasE91</PackageId>
     <Company>DZen</Company>
+    <Description>C# port of BasE91, a high efficiency binary to ASCII encoding.</Description>
+    <PackageProjectUrl>https://github.com/jdluzen/base91</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jdluzen/base91</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Authors>jdluzen</Authors>
+    <PackageTags>base91 encoding ascii</PackageTags>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <Copyright>C# port Copyright © Joe Dluzen 2018, 2023. BasE91 in C/Java Copyright © Joachim Henke 2000 - 2006</Copyright>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Memory" Version="4.5.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>
